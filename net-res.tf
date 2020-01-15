@@ -1,13 +1,10 @@
 
-data "azurerm_resource_group" "res_group"{
-name  = "RG-TAdmin2-TD1"
-//location  = "westeurope"
-}
+
 
 data azurerm_virtual_network "Vnet" {
     name = "TAdmin2-Network1"
     //address_space = ["10.5.0.0/16"]
-    //location = "${azurerm_resource_group.res_group.location}"
+    //location = "${var.azurerm_location}"
     resource_group_name = "${data.azurerm_resource_group.res_group.name}"
 }
 output "virtual_network_id" {
@@ -24,9 +21,9 @@ output "subnet_id" {
   value = "${data.azurerm_subnet.subnet.id}"
 }
 
-resource "azurerm_network_interface" "NIC" {
+resource "azurerm_network_interface" "nic" {
   name= "${var.prefix}-NIC"
-  location = "${data.azurerm_resource_group.res_group.location}"
+  location = "${var.azurerm_location}"
   resource_group_name = "${data.azurerm_resource_group.res_group.name}"
 
   ip_configuration {
