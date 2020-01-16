@@ -31,21 +31,23 @@ resource "azurerm_network_interface" "nic" {
       name = "${var.prefix}-nicConfig"
       subnet_id= "${data.azurerm_subnet.subnet.id}"
       private_ip_address_allocation="Dynamic"
+      public_ip_address_id          = "${element(azurerm_public_ip.pip.*.id,count.index)}"
       
   }
 }
 
-#/.. get public IP (need to check with Tressa)
-#data "azurerm_public_ip" "pip" {
-#name = "${azurerm_public_ip.datasourceip.name}"
-#resource_group_name = "${data.azurerm_resource_group.res_group.name}"
-#depends_on = ["azurerm_virtual_machine.test"]
-#}
+resource "azurerm_public_ip" "pip" {
+  count= "${var.nodecount}"
+  name= "${var.prefix}-${var.vm_name}-${count.index}-nic"
+  location = "${var.azurerm_location}"
+  resource_group_name = "${data.azurerm_resource_group.res_group.name}"
+  allocation_method = "Dynamic"
 
-#output "ip_address" {
-#value = "${data.azurerm_public_ip.pip.ip_address}"
-#}
-
+  tags {
+    environment = "${var.environment}"
+  }
+}
+/*
 data "azurerm_network_security_group" "netsecgrp" {
   name                = "AADDS-ta2-dev.info-NSG"
   resource_group_name = "${data.azurerm_resource_group.res_group.name}"
@@ -54,6 +56,7 @@ data "azurerm_network_security_group" "netsecgrp" {
 output "location" {
   value = "${data.azurerm_network_security_group.netsecgrp.location}"
 }
+*/
 
 
 
