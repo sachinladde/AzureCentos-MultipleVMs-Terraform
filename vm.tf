@@ -1,27 +1,29 @@
 
-resource "azurerm_resource_group" "res_group"{
-    name  = "${var.prefix}-RG"
-    location  = "${var.azurerm_location}"
+data "azurerm_resource_group" "res_group"{
+    name  = "${var.resource}"
+   // location  = "${var.azurerm_location}"
 }
-/*
-resource "azurerm_managed_disk" "test" {
-       count= ${var.nodecount}
+
+resource "azurerm_managed_disk" "dd" {
+       count= "${var.nodecount}"
       name = "${var.prefix}-DataDisk-${count.index}"
+      location  = "${var.azurerm_location}"
       resource_group_name = "${data.azurerm_resource_group.res_group.name}"
-      storage_account_type = "Standard_LRS"
-      create_option = "Empty"
-      disk_size_gb = "1023"
+      storage_account_type = "${var.managed_disk_storage_account_type}"
+      create_option        = "${var.managed_disk_create_option}"
+      disk_size_gb         = "${var.managed_disk_size_gb}"
+
 }
-*/
+
 resource "azurerm_virtual_machine" "vm" {
-      count= ${var.nodecount}
-      name = "${var.prefix}-vm-${count.index}"
+      count= "${var.nodecount}"
+      name = "${var.prefix}-${var.vm_name}-${count.index}"
       location="${var.azurerm_location}"
-      resource_group_name = "${azurerm_resource_group.res_group.name}"
-      network_interface_ids = "${element(azurerm_network_interface.nic.*.id,count.index)}"
-      vm_size = "Standard_DS1_v2"
-      delete_os_disk_on_termination = "true"
-      delete_data_disks_on_termination = "true"
+      resource_group_name = "${data.azurerm_resource_group.res_group.name}"
+      network_interface_ids = ["${element(azurerm_network_interface.nic.*.id,count.index)}"]
+      vm_size = "${var.vm_size}"
+      delete_os_disk_on_termination = "${var.delete_os_disk_on_termination}"
+      //delete_data_disk_on_termination = "${var.delete_data_disk_on_termination}"
 
       storage_image_reference {
       publisher = "${var.vm_image_publisher}"
@@ -40,21 +42,36 @@ resource "azurerm_virtual_machine" "vm" {
 
 # Adding additional disk  to multiple VMs
 
-      storage_data_disk {
-      name = "${azurerm_managed_disk.test.name}-${count.index}"
-      managed_disk_id = "${element(azurerm_managed_disk.test.*.id, count.index)}"
-      create_option = "Attach"
-      lun = 1
-      disk_size_gb = "${azurerm_managed_disk.test.disk_size_gb}"
-      }
+    storage_data_disk {
+    name            = "${element(azurerm_managed_disk.dd.*.name, count.index)}"
+    managed_disk_id = "${element(azurerm_managed_disk.dd.*.id, count.index)}"
+    create_option   = "Attach"
+    lun             = 0
+    disk_size_gb    = "${element(azurerm_managed_disk.dd.*.disk_size_gb, count.index)}"
+    }
 
       #define credentials # How can we create VM without specifying password in the code.
       os_profile {
-      computer_name = "SERVER2012"
+      computer_name = "${var.prefix}-${var.hostname}-${count.index}"
       admin_username = "${var.VM_ADMIN}"
-      admin_password = "${var.VM_PASSWORD}"
+     // admin_password = "${var.VM_PASSWORD}"
       }
 
+       os_profile_linux_config {
+    disable_password_authentication = true
+
+    ssh_keys {
+      path     = "/home/${var.VM_ADMIN}/.ssh/authorized_keys"
+      key_data = "${var.ssh_key_path}"
+    }
+  }
+   boot_diagnostics {
+    enabled     = "${var.boot_diagnostics_storage_uri != "" ? true : false}"
+    storage_uri = "${var.boot_diagnostics_storage_uri}"
+  }
+
+}
+/*
       os_profile_windows_config {
       provision_vm_agent = "true"
       enable_automatic_upgrades = "true"
@@ -64,8 +81,8 @@ resource "azurerm_virtual_machine" "vm" {
       }
       }
 
-}
-/*
+
+
 #############   Azure Deployment template to domain join the VM ###################
 
 #Extension: add server to domain

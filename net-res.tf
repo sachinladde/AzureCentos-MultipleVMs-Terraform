@@ -2,7 +2,7 @@
 
 
 data azurerm_virtual_network "Vnet" {
-    name = "TAdmin2-Network1"
+    name = "${var.vnet_name}"
     //address_space = ["10.5.0.0/16"]
     //location = "${var.azurerm_location}"
     resource_group_name = "${data.azurerm_resource_group.res_group.name}"
@@ -12,7 +12,7 @@ output "virtual_network_id" {
 }
 
 data azurerm_subnet "subnet" {
-    name = "TDEv-Development"
+    name = "${var.subnet_name}"
     //address_prefix = "10.5.40.0/22"
     virtual_network_name = "${data.azurerm_virtual_network.Vnet.name}"
     resource_group_name = "${data.azurerm_resource_group.res_group.name}"
@@ -22,7 +22,8 @@ output "subnet_id" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name= "${var.prefix}-NIC"
+  count= "${var.nodecount}"
+  name= "${var.prefix}-${var.vm_name}-${count.index}-nic"
   location = "${var.azurerm_location}"
   resource_group_name = "${data.azurerm_resource_group.res_group.name}"
 
@@ -53,3 +54,6 @@ data "azurerm_network_security_group" "netsecgrp" {
 output "location" {
   value = "${data.azurerm_network_security_group.netsecgrp.location}"
 }
+
+
+

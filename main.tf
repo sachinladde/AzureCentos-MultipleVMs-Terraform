@@ -8,23 +8,53 @@ Naming Conventions
       PIP = Public IP
       Stor = Storage Account
       NIC = Network Interface
+      MD = Managed Disk
 
 
 
 */
 
 
-terraform 
-{
+
 provider "azurerm" {
+version = "~> 1.25"
 subscription_id="${var.AZURE_SUBSCRIPTION_ID}"
 client_id="${var.AZURE_CLIENT_ID}"
 client_secret="${var.AZURE_CLIENT_SECRET}"
 tenant_id="${var.AZURE_TENANT_ID}"
   }
+
+variable "AZURE_SUBSCRIPTION_ID"{}
+variable "AZURE_CLIENT_ID"{}
+variable "AZURE_CLIENT_SECRET"{}
+variable "AZURE_TENANT_ID"{}
+variable "subnet_name"{
+  default = "default"
+}
+variable "vnet_name" {
+  default = "SA-DEV-vnet"
+}
+variable "resource"{
+  default= "SA-DEV"
 }
 
+variable "delete_os_disk_on_termination" {
+  description = "(Optional) Flag to enable deletion of the OS disk VHD blob or managed disk when the VM is deleted, defaults to true."
+  default     = true
+}
 
+variable "delete_data_disk_on_termination" {
+  description = "(Optional) Flag to enable deletion of the OS disk VHD blob or managed disk when the VM is deleted, defaults to true."
+  default     = true
+}
+variable "vm_name" {
+  description = "Name of the virtual machine."
+  default     = "CentosVM"
+}
+variable "hostname" {
+  description = "Hostname to use for the virtual machine. Uses vmName if not provided."
+  default     = "centos"
+}
 
 variable "vm_size" {
   description = "Azure VM Size to use. See: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs"
@@ -64,7 +94,7 @@ description = "vm image vendor's VM offering"
 default = "CentOS"
 }
 variable "prefix" {
-  default = "SA-prod"
+  default = "sa-prod"
 }
 variable "vm_image_sku" {
 default = "7.3"
@@ -78,33 +108,48 @@ variable "VM_ADMIN" {
 //Disallowed values: "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
 }
 
+
+variable "data_disk" {
+  description = "Create Virtual Machine with attached managed data disk. Default false"
+  default     = "false"
+}
+variable "managed_disk_prefix" {
+  description = "Specifies the name of the managed disk. Changing this forces a new resource to be created."
+  default     = "md"
+}
+
+variable "managed_disk_storage_account_type" {
+  description = "(Optional) The type of storage to use for the managed disk. Allowable values are Standard_LRS or Premium_LRS. Default = Standard_LRS."
+  default     = "Standard_LRS"
+}
+
+variable "managed_disk_create_option" {
+  description = "(Optional) The method to use when creating the managed disk. Values are Import, Empty, Copy, and FromImage. Default = Empty."
+  default     = "Empty"
+}
+
+variable "managed_disk_size_gb" {
+  description = "(Optional) Specifies the size of the os disk in gigabytes. Default 100 GB"
+  default     = "32"
+}
+
+variable "boot_diagnostics_storage_uri" {
+  default     = ""
+  description = "Blob endpoint for the storage account to hold the virtual machine's diagnostic files. This must be the root of a storage account, and not a storage container."
+}
+
+variable "managed_disk_type" {
+  description = "Specifies the type of managed disk to create. Value you must be either Standard_LRS or Premium_LRS. Cannot be used when vhd_uri is specified."
+  default     = "Standard_LRS"
+}
+
+/*
 variable "VM_PASSWORD" {
 }
 
 variable "admin_password" {
   
 }
-variable "data_disk" {
-  description = "Create Virtual Machine with attached managed data disk. Default false"
-  default     = "false"
-}
-variable "managed_disk_type" {
-  description = "Specifies the type of managed disk to create. Value you must be either Standard_LRS or Premium_LRS. Cannot be used when vhd_uri is specified."
-  default     = "Standard_LRS"
-}
 
-variable "vm_size" {
-//https://github.com/terraform-providers/terraform-provider-azurerm/issues/1314 
-#Get-AzureRmVMSize -Location 'uksouth' | select name, NumberOfCores, MemoryInMB, ResourceDiskSizeInMB | ft
-//https://azure.microsoft.com/en-us/documentation/articles/cloud-services-sizes-specs/
-//https://azure.microsoft.com/en-gb/documentation/articles/virtual-machines-windows-sizes/
-//https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/
-description = "VM instance size"
-default = "Standard_A4_v2"
-}
-
-
-
-
-
+*/
 
