@@ -6,7 +6,7 @@ data "azurerm_resource_group" "res_group"{
 
 resource "azurerm_managed_disk" "dd" {
        count= "${var.nodecount}"
-      name = "${var.prefix}-DataDisk-${count.index}"
+      name = "${var.prefix}-${var.vm_name}-${count.index}-DataDisk-${count.index}"
       location  = "${var.azurerm_location}"
       resource_group_name = "${data.azurerm_resource_group.res_group.name}"
       storage_account_type = "${var.managed_disk_storage_account_type}"
@@ -52,7 +52,7 @@ resource "azurerm_virtual_machine" "vm" {
 
       #define credentials # How can we create VM without specifying password in the code.
       os_profile {
-      computer_name = "${var.prefix}-${var.hostname}-${count.index}"
+      computer_name ="${var.prefix}-${var.vm_name}-${count.index}"
       admin_username = "${var.VM_ADMIN}"
      // admin_password = "${var.VM_PASSWORD}"
       }
@@ -62,7 +62,7 @@ resource "azurerm_virtual_machine" "vm" {
 
     ssh_keys {
       path     = "/home/${var.VM_ADMIN}/.ssh/authorized_keys"
-      key_data = "${var.ssh_key_path}"
+      key_data = "${file("/home/${var.VM_ADMIN}/.ssh/id_rsa.pub")}"
     }
   }
    boot_diagnostics {
