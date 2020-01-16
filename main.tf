@@ -79,7 +79,7 @@ variable "admin_public_key" {
 
 variable "ssh_key_path" {
   description = "Path to the public key to be used for ssh access to the VM. Default is ~/.ssh/id_rsa.pub. If specifying a path to a certification on a Windows machine to provision a linux vm use the / in the path versus backslash. e.g. c:/home/id_rsa.pub"
-  default     = "~/.ssh/id_rsa.pub"
+  default     = ""
 }
 
 variable "azurerm_location"{
