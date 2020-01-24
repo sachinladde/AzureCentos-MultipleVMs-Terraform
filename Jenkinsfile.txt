@@ -15,8 +15,8 @@ pipeline {
         }
         stage('git clone') {
             steps {
-                sh 'rm -r *'
-                sh 'sudo -tty git clone https://github.com/sachinladde/MyWork.git'
+                sh 'sudo rm -r *'
+                sh 'sudo git clone https://github.com/sachinladde/MyWork.git'
             }
         }
         stage('terraform init') {
