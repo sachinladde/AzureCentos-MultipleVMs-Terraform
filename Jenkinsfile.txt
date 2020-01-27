@@ -23,7 +23,7 @@ pipeline {
         }
         stage('terraform init') {
             steps {
-                
+                sh 'terraform --version'
                 sh '/home/Nancy/MyWork/Mywork/terraform init ./MyWork'
             }
         }
