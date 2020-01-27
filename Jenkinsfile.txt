@@ -23,7 +23,7 @@ pipeline {
         }
         stage('terraform init') {
             steps {
-                def tfHome = tool name: '', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
+                
                 sh 'sudo /home/Nancy/MyWork/Mywork/terraform init ./MyWork'
             }
         }
