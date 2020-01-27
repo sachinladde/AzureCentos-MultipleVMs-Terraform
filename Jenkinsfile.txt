@@ -24,7 +24,7 @@ pipeline {
         stage('terraform init') {
             steps {
                 
-                sh 'sudo /home/Nancy/MyWork/Mywork/terraform init ./MyWork'
+                sh '/home/Nancy/MyWork/Mywork/terraform init ./MyWork'
             }
         }
         stage('terraform plan') {
