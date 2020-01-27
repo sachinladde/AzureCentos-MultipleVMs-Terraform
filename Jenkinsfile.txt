@@ -16,11 +16,14 @@ pipeline {
         stage('git clone') {
             steps {
                 sh 'sudo rm -r *'
-                sh 'git clone git@github.com:sachinladde/MyWork.git'     
+               // sh 'git clone git@github.com:sachinladde/MyWork.git' 
+                git credentialsId: '77569ca0-7d62-4541-bdc1-6e417e7752ca', url: 'git@github.com:sachinladde/MyWork.git'
+                git clone     
             }
         }
         stage('terraform init') {
             steps {
+                def tfHome = tool name: '', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
                 sh 'sudo /home/Nancy/MyWork/Mywork/terraform init ./MyWork'
             }
         }
