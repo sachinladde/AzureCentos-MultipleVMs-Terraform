@@ -17,8 +17,8 @@ pipeline {
             steps {
                 sh 'sudo rm -r *'
                // sh 'git clone git@github.com:sachinladde/MyWork.git' 
-                git credentialsId: '77569ca0-7d62-4541-bdc1-6e417e7752ca', url: 'git@github.com:sachinladde/MyWork.git'
-                git clone     
+                git url: 'git@github.com:sachinladde/MyWork.git'
+                   
             }
         }
         stage('terraform init') {
