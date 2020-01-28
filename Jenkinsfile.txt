@@ -12,7 +12,7 @@ pipeline {
         stage('terraform started') {
             steps {
                 def tfHome = tool name: ‘terraform’
-            env.PATH = “${tfHome}:${env.PATH}”
+            env.PATH = “${tfHome}${env.PATH}”
                 sh 'whoami'
                 sh 'echo "Started...!" '
                 sh ‘terraform — version’
