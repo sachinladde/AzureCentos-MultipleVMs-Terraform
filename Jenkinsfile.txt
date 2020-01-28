@@ -11,7 +11,7 @@ pipeline {
 
         stage('terraform started') {
             steps {
-                def tfHome = tool name: ‘terraform’
+                def tfHome = tool name: 'terraform', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
             env.PATH = “${tfHome}${env.PATH}”
                 sh 'whoami'
                 sh 'echo "Started...!" '
