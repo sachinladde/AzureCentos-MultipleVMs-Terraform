@@ -7,20 +7,15 @@ pipeline {
 
     stages {
 
-         stage(‘set path’) {
-    steps {
-        script {
-            def tfHome = tool name: ‘terraform’
-            env.PATH = “${tfHome}:${env.PATH}”
-                }
-     sh ‘terraform — version’
-         }
-     }
+ 
 
         stage('terraform started') {
             steps {
+                def tfHome = tool name: ‘terraform’
+            env.PATH = “${tfHome}:${env.PATH}”
                 sh 'whoami'
                 sh 'echo "Started...!" '
+                sh ‘terraform — version’
             }
         }
         stage('git clone') {
