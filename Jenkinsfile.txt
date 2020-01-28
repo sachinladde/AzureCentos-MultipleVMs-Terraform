@@ -23,13 +23,13 @@ pipeline {
         }
         stage('terraform init') {
             steps {
-                sh 'terraform --version'
-                sh '/home/Nancy/MyWork/Mywork/terraform init ./MyWork'
+                sh 'Terraform --version'
+                sh '/home/Nancy/MyWork/Mywork/Terraform init ./MyWork'
             }
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ./MyWork; sudo /home/Nancy/MyWork/Mywork/terraform plan ./MyWork'
+                sh 'ls ./MyWork; sudo /home/Nancy/MyWork/Mywork/Terraform plan ./MyWork'
             }
         }
         stage('terraform ended') {
