@@ -9,14 +9,16 @@ pipeline {
 
  
 
-        stage('terraform started') {
-            steps {
-                def tfHome = tool name: 'terraform', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
-            env.PATH = “${tfHome}${env.PATH}”
-                sh 'whoami'
-                sh 'echo "Started...!" '
-                sh ‘terraform — version’
-            }
+    stages {
+      stage ('Check Terraform Version') {
+         steps {
+            script {
+            def tfhome = tool name: 'Terraform 0.11.13', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
+            env.PATH = "${tfhome}:${env.PATH}"
+          }
+          sh 'terraform --version'
+         }
+      }
         }
         stage('git clone') {
             steps {
