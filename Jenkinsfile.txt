@@ -9,7 +9,7 @@ pipeline {
 
  
 
-    stages {
+    
       stage ('Check Terraform Version') {
          steps {
             script {
@@ -18,7 +18,7 @@ pipeline {
           }
           sh 'terraform --version'
          }
-      }
+      
         }
         stage('git clone') {
             steps {
