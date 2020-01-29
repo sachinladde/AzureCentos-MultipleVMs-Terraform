@@ -37,7 +37,7 @@ pipeline {
         stage('terraform plan') {
             steps {
                 sh 'ls'  
-                sh 'terraform plan -out=plan -auto-approve’
+                sh 'terraform plan -out=plan -input=false’
             }
         }
         stage('terraform ended') {
