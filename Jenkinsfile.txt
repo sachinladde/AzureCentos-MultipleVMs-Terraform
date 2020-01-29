@@ -36,7 +36,8 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ; sudo /home/Nancy/MyWork/Mywork/terraform plan ./MyWork'
+                sh 'ls'  
+                sh 'terraform plan -out=plan -auto-approve’
             }
         }
         stage('terraform ended') {
