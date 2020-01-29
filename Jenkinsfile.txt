@@ -36,7 +36,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ./MyWork; sudo /home/Nancy/MyWork/Mywork/terraform plan ./MyWork'
+                sh 'ls ; sudo /home/Nancy/MyWork/Mywork/terraform plan ./MyWork'
             }
         }
         stage('terraform ended') {
