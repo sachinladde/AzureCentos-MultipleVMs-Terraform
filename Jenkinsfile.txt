@@ -36,8 +36,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh 'ls'  
-                sh 'terraform plan -out=plan -input=false’
+                sh 'ls ;  terraform plan '
             }
         }
         stage('terraform ended') {
