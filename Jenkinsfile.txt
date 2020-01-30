@@ -16,12 +16,13 @@ pipeline {
             def tfhome = tool name: 'terraform' 
             env.PATH = "${tfhome}:${env.PATH}"
           }
-          sh 'terraform --version'
+         // sh 'terraform --version'
          }
       
         }
         stage('git clone') {
             steps {
+                sh 'whoami'
                 sh 'sudo rm -r *'
                // sh 'git clone git@github.com:sachinladde/MyWork.git' 
                // git url: 'git@github.com:sachinladde/MyWork.git'
