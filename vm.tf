@@ -62,7 +62,7 @@ resource "azurerm_virtual_machine" "vm" {
 
     ssh_keys {
       path     = "/home/${var.VM_ADMIN}/.ssh/authorized_keys"
-      key_data = "${file("/home/${var.VM_ADMIN}/.ssh/id_rsa.pub")}"
+      key_data = "${file("/etc/ssh/ssh_host_rsa_key.pub")}"
     }
   }
    boot_diagnostics {
