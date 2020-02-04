@@ -48,13 +48,23 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 	Because we have copied the binary file to /usr/local/bin, the terraform command is available. You can check its absolute path by using   command 
     ```shell
   which terraform
-     ```
-      
--	The below command will show the version of terraform.
-	   ```shell
-     terraform --version   
-       ```
-       
-  
+     ```    
+- The below command will show the version of terraform.
+   ```shell
+  terraform --version   
+    ```
+### 2. Installing Jenkins
+- Jenkins is a Java application, so the first step is to install Java. Run the following command to install the OpenJDK 8 package:
+   ```shell
+  sudo yum install java-1.8.0-openjdk-devel   
+    ```
+- The next step is to enable the Jenkins repository. To do that, import the GPG key using the following curl command
+   ```shell
+  curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo   
+    ```
+- And add the repository to your system with below command
+   ```shell
+  sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key   
+    ```
   
   [terraform website]: https://www.terraform.io/downloads.html
