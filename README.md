@@ -98,6 +98,9 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
   http://localhost:8080
   http://<DNS Name of Azure Cloud VM>:8080
    ```
-  [unlock jenkins]: 
+   [unlock jenkins]
+ 
+ 
+  [unlock jenkins]:  sachinladde/MyWork/unlock-jenkins.jpg
     
   [terraform website]: https://www.terraform.io/downloads.html
