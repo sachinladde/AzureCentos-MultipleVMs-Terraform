@@ -127,8 +127,35 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
    
    ![jenkins](jenkins.jpg)
  
-#### 2.2 Install and configure Git
+### 3. Install and configure Git
+Git is a free and open source, fast and distributed version control system (VCS), which by design is based on speed, efficient performance and data integrity to support small-scale to extensive software development projects.
+Git is a software repository that allows you to keep a track of your software changes, revert to previous version and create another versions of files and directories.
+Git is written in C, with a mix of Perl and a variety of shell scripts, it’s primarily intended to run on the Linux kernel
 
-
+ - Install Git using below command
+     ```shell
+  	sudo yum install git
+	git --version
+     ``` 
+ - Set Up Git Account
+   You can start by creating a Git user with the useradd command as below, where the -m flag used to create the user’s home directory    under /home and -s specifies the user’s default shell.
+      ```shell
+  	useradd -m -s /bin/bash username 
+        passwd username
+     ``` 
+ - Now, add the new user to the wheel group to enable the account to use the sudo command
+      ```shell
+  	usermod username -aG wheel
+     ``` 
+ - Then configure Git with the new user as follows
+      ```shell
+         su username 
+	 sudo git config --global user.name "Your Name"
+	 sudo git config --global user.email "you@example.com"
+     ``` 
+- Now verify Git configuration using following command
+     ```shell
+  	sudo git config --list
+     ``` 
  
   [terraform website]: https://www.terraform.io/downloads.html
