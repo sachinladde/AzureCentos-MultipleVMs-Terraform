@@ -66,5 +66,32 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
    ```shell
   sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key   
     ```
-  
+- Once the repository is enabled, install the latest stable version of Jenkins by typing:
+   ```shell
+  sudo yum install jenkins   
+    ```
+- After the installation process is completed, start the Jenkins service with:
+  ```shell
+  sudo systemctl start jenkins   
+    ```
+- To check whether it started successfully run:
+  ```shell
+  systemctl status jenkins   
+    ```
+- Finally enable the Jenkins service to start on system boot.
+  ```shell
+  sudo systemctl enable jenkins   
+    ```
+- If you are installing Jenkins on a remote CentOS server that is protected by a firewall you need to open port 8080. Use the following commands to open the necessary port:
+  ```shell
+  sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+  sudo firewall-cmd --reload  
+    ```
+- If you want to access jenkins console from your local desktop, then you need to bind local 8080 port with the VM on which jenkins is installed. Also make sure that your VM and Desktop public keys are identical.
+  ```shell
+  ssh -L 127.0.0.1:8080:localhost:8080 Nancy@ansi.southindia.cloudapp.azure.com  
+    ```
+#### 2.1 Setting up Jenkins
+
+
   [terraform website]: https://www.terraform.io/downloads.html
