@@ -101,7 +101,11 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
    
    ![unlock jenkins](unlock-jenkins.jpg)
  
- 
+ - Use the following command to print the password on your terminal:
+     ```shell
+  	sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+     ```
+ - Copy the password from your terminal, paste it into the Administrator password field and click Continue
  
     
   [terraform website]: https://www.terraform.io/downloads.html
