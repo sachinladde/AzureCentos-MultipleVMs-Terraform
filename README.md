@@ -82,7 +82,7 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
   ```shell
   sudo systemctl enable jenkins   
     ```
-- If you are installing Jenkins on a remote CentOS server that is protected by a firewall you need to open port 8080. Use the following commands to open the necessary port:
+- If you are installing Jenkins on a remote CentOS server that is protected by a firewall you need to open port 8080. Use the following commands to open the necessary port. Also make sure that you have opened the http port on Azure NSG inside VM's networking option
   ```shell
   sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
   sudo firewall-cmd --reload  
@@ -92,6 +92,12 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
   ssh -L 127.0.0.1:8080:localhost:8080 Nancy@ansi.southindia.cloudapp.azure.com  
     ```
 #### 2.1 Setting up Jenkins
-
-
+ - To set up your new Jenkins installation, open your browser and type your domain or IP address followed by port 8080. If your VM is on    any cloud platform then use public IP of that vm to access Jenkins console. If you have bind your local desktop's port 8080 to the VM    then simply type localhost and Jenkins console will show up as below
+  ```shell
+  http://your_ip_or_domain:8080
+  http://localhost:8080
+  http://<DNS Name of Azure Cloud VM>:8080
+   ```
+  [unlock jenkins]: 
+    
   [terraform website]: https://www.terraform.io/downloads.html
