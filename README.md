@@ -93,14 +93,15 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
     ```
 #### 2.1 Setting up Jenkins
  - To set up your new Jenkins installation, open your browser and type your domain or IP address followed by port 8080. If your VM is on    any cloud platform then use public IP of that vm to access Jenkins console. If you have bind your local desktop's port 8080 to the VM    then simply type localhost and Jenkins console will show up as below
-  ```shell
-  http://your_ip_or_domain:8080
-  http://localhost:8080
-  http://<DNS Name of Azure Cloud VM>:8080
-   ```
-   [unlock jenkins]
+    ```shell
+  	http://your_ip_or_domain:8080
+  	http://localhost:8080
+  	http://<DNS Name of Azure Cloud VM>:8080
+     ```
+   
+   ![unlock jenkins](unlock-jenkins.jpg)
  
  
-  [unlock jenkins]:  sachinladde/MyWork/unlock-jenkins.jpg
+ 
     
   [terraform website]: https://www.terraform.io/downloads.html
