@@ -109,8 +109,21 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
    
    ![customize-jenkins](customize-jenkins.jpg)
  - On the next screen, you will be asked whether you want to install the suggested plugins or to select specific plugins. Click on  	the Install suggested plugins box, and the installation process will start immediately.
- 
+   
+   ![Jenkins-plugin](Jenkins-plugin.jpg)
+   
  - Once the installation is complete, you will be prompted to set up the first administrative user. Fill out all required information and click Save and Continue.
  
+   ![Jenkins-firstadmin](Jenkins-firstadmin.jpg) 
  
+ - On the next page, you will be asked to set the URL for the Jenkins instance. The URL field will be populated with an automatically generated URL.
+
+   ![jenkins-url](jenkins-url.jpg)
+ - To complete the setup confirm the URL by clicking on the Save and Finish button.
+ 
+   ![jenkins-ready](jenkins-ready.jpg)
+   
+ - Finally, click on the Start using Jenkins button and you will be redirected to the Jenkins dashboard logged in as the admin user you have created in one of the previous steps. 
+   
+   ![jenkins](jenkins.jpg)
   [terraform website]: https://www.terraform.io/downloads.html
