@@ -21,12 +21,18 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 - Install Wget Package 
 
   GNU Wget is a free and open source software package for retrieving files using HTTP, HTTPS, and FTP, the most widely-used Internet protocols. The GNU/wget might not be installed on your system and here is how to install it using yum command.
+ 
   ```shell
-  sudo yum install wget unzip
-  ```
+    sudo yum install wget unzip
+   ```
 - Download terraform package using wget.
 
   Here i am downloading Terraform version 11.13. But if you want to download latest version of terraform you can download it from [terraform website]
+  
+    ```shell
+  wget  https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
+  ```
+- Unzip the downloaded package by using unzip command, it will extract one binary file called ‘terraform’  
   
   
   
