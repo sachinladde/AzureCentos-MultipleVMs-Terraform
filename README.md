@@ -106,6 +106,11 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
   	sudo cat /var/lib/jenkins/secrets/initialAdminPassword
      ```
  - Copy the password from your terminal, paste it into the Administrator password field and click Continue
+   
+   ![customize-jenkins](customize-jenkins.jpg)
+ - On the next screen, you will be asked whether you want to install the suggested plugins or to select specific plugins. Click on  	the Install suggested plugins box, and the installation process will start immediately.
  
-    
+ - Once the installation is complete, you will be prompted to set up the first administrative user. Fill out all required information and click Save and Continue.
+ 
+ 
   [terraform website]: https://www.terraform.io/downloads.html
