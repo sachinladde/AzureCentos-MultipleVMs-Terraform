@@ -128,9 +128,9 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
    ![jenkins](jenkins.jpg)
  
 ### 3. Install and configure Git
-Git is a free and open source, fast and distributed version control system (VCS), which by design is based on speed, efficient performance and data integrity to support small-scale to extensive software development projects.
-Git is a software repository that allows you to keep a track of your software changes, revert to previous version and create another versions of files and directories.
-Git is written in C, with a mix of Perl and a variety of shell scripts, it’s primarily intended to run on the Linux kernel
+   Git is a free and open source, fast and distributed version control system (VCS), which by design is based on speed, efficient   performance and data integrity to support small-scale to extensive software development projects.
+   Git is a software repository that allows you to keep a track of your software changes, revert to previous version and create another versions of files and directories.
+   Git is written in C, with a mix of Perl and a variety of shell scripts, it’s primarily intended to run on the Linux kernel
 
  - Install Git using below command
      ```shell
