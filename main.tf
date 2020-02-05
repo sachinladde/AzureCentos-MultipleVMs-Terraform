@@ -28,7 +28,7 @@ variable "subscription_id"{}
 variable "client_id"{}
 variable "client_secret"{}
 variable "tenant_id"{}
-variable "VM_ADMIN"{}
+
 
 variable "environment" {
   description = "Define the environment to deploy to"
