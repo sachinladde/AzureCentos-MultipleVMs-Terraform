@@ -18,16 +18,16 @@ Naming Conventions
 
 provider "azurerm" {
 version = "~> 1.25"
-subscription_id="${var.AZURE_SUBSCRIPTION_ID}"
-client_id="${var.AZURE_CLIENT_ID}"
-client_secret="${var.AZURE_CLIENT_SECRET}"
-tenant_id="${var.AZURE_TENANT_ID}"
+subscription_id="${var.subscription_id}"
+client_id="${var.client_id}"
+client_secret="${var.client_secret}"
+tenant_id="${var.tenant_id}"
   }
 
-variable "AZURE_SUBSCRIPTION_ID"{}
-variable "AZURE_CLIENT_ID"{}
-variable "AZURE_CLIENT_SECRET"{}
-variable "AZURE_TENANT_ID"{}
+variable "subscription_id"{}
+variable "client_id"{}
+variable "client_secret"{}
+variable "tenant_id"{}
 
 variable "environment" {
   description = "Define the environment to deploy to"
