@@ -165,7 +165,11 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 	
 	![sshfs](sshfs.JPG)
 	
-	
+- After installing SSH FS extention, you need to configure the extention by right click abd select "Extention Setting" as shown in below picture.
+
+	![Extention Setting](ExtentionSetting.jpg)
+
+
 	
   [terraform website]: https://www.terraform.io/downloads.html
   [Microsoft Website]: https://code.visualstudio.com/download
