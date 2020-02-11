@@ -169,9 +169,15 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 
 	![Extention Setting](ExtentionSetting.JPG)
 
-- Please provide appropriate value and configure the extention.
+- Please provide appropriate value and configure the extention & save the extention settings.
 
 	![sshfssettings](sshfssettings.JPG)
+	
+- To connect & access linux vm, simply right click on the ssh fs connection name and click on connect as workspace.
+
+	![sshfsconnect](sshfsconnect.JPG)
+	
+	
 	
   [terraform website]: https://www.terraform.io/downloads.html
   [Microsoft Website]: https://code.visualstudio.com/download
