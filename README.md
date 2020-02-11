@@ -169,7 +169,9 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 
 	![Extention Setting](ExtentionSetting.JPG)
 
+- Please provide appropriate value and configure the extention.
 
+	![sshfssettings](sshfssettings.JPG)
 	
   [terraform website]: https://www.terraform.io/downloads.html
   [Microsoft Website]: https://code.visualstudio.com/download
