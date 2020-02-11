@@ -164,5 +164,6 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 - Once you installed Visual Studio Code, you need to add an extention named "SSH FS". This extention allows you to access files from your Linux VM. Please refer below picture. 
 	
 	![sshfs](sshfs.jpg)
+	
   [terraform website]: https://www.terraform.io/downloads.html
   [Microsoft Website]: https://code.visualstudio.com/download
