@@ -9,7 +9,7 @@ This project can be used to create multiple Linux VMs with SSH key and zure feat
 * [Components](#components)
 * [Features](docs/readmes/README.md#features)
 * [What To Do Next?](#what-to-do-next)
-* [Code of Conduct](#code-of-conduct)
+
 
 ## Getting Started
 
@@ -177,7 +177,10 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 
 	![sshfsconnect](sshfsconnect.JPG)
 	
-	
+## Code Demo
+In this section we are going to authenticate Azure cloud using application id and secret which we have created in earlier section and also we will be creating two Azure Linux VMs using terraform Code.
+
+### Terraform Code
 	
   [terraform website]: https://www.terraform.io/downloads.html
   [Microsoft Website]: https://code.visualstudio.com/download
