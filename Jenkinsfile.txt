@@ -31,9 +31,9 @@ pipeline {
             steps {
                   //  sh 'ls ;  terraform plan -out=plan -input=false -var subscription_id=$AZURE_SUBSCRIPTION_ID -var client_id=$AZURE_CLIENT_ID -var client_secret=$AZURE_CLIENT_SECRET -var tenant_id=$AZURE_TENANT_ID'
                 // }
-
+//  Added Azure Cli & Azure cred plugins and added global cred in jenkins. Tried to avoid keeping the .tfvars out of repo but it seems its not possible. Below code gave error as azure cli wont support service principle //
            // withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AzurePortal',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-
+// This is service principle login code. 
                 //withCredentials([azureServicePrincipal('Azsrv')]) {
                 //sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                 //sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
