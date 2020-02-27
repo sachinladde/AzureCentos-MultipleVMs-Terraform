@@ -39,7 +39,6 @@ pipeline {
                 sh 'terraform init'
                 sh 'terraform plan -out=plan -input=false'
 
-                '''
                 }
             }
         }
