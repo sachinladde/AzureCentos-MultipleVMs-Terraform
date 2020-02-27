@@ -34,7 +34,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ;  terraform plan -out=plan -input=false -var  subscription_id= env.subscription_id -var client_id=env.client_id -var client_secret=env.client_secret -var tenant_id=env.tenant_id'
+                sh 'ls ;  terraform plan -out=plan -input=false'
             }
         }
         stage('terraform ended') {
