@@ -33,12 +33,11 @@ pipeline {
                 // }
 
                 withCredentials([azureServicePrincipal('Azsrv')]) {
-                sh '''
-                    az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
-                    az account set -s $AZURE_SUBSCRIPTION_ID
-                    terraform --version
-                    terraform init
-                    terraform plan -out=plan -input=false
+                sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
+                sh 'terraform --version'
+                sh 'terraform init'
+                sh 'terraform plan -out=plan -input=false'
 
                 '''
                 }
