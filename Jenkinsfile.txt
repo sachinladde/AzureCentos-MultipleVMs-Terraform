@@ -29,12 +29,14 @@ pipeline {
        
         stage('terraform plan') {
             steps {
-                    sh 'ls ;  terraform plan -out=plan -input=false -var subscription_id=$AZURE_SUBSCRIPTION_ID -var client_id=$AZURE_CLIENT_ID -var client_secret=$AZURE_CLIENT_SECRET -var tenant_id=$AZURE_TENANT_ID'
+                  //  sh 'ls ;  terraform plan -out=plan -input=false -var subscription_id=$AZURE_SUBSCRIPTION_ID -var client_id=$AZURE_CLIENT_ID -var client_secret=$AZURE_CLIENT_SECRET -var tenant_id=$AZURE_TENANT_ID'
                 // }
 
-                withCredentials([azureServicePrincipal('Azsrv')]) {
-                sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-                sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '<CREDENTIAL_ID>',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+
+                //withCredentials([azureServicePrincipal('Azsrv')]) {
+                //sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                //sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
                 sh 'terraform --version'
                 sh 'terraform init'
                 sh 'terraform plan -out=plan -input=false'
