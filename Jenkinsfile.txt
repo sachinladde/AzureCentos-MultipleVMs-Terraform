@@ -26,12 +26,7 @@ pipeline {
                  git credentialsId: '24120fd5-a5de-40b1-a325-4ddf72e3f8b6', url: 'https://github.com/sachinladde/MyWork.git'  
             }
         }
-        stage('terraform init') {
-            steps {
-                sh 'terraform --version'
-                sh 'terraform init '
-            }
-        }
+       
         stage('terraform plan') {
             steps {
                 //    sh 'ls ;  terraform plan -out=plan -input=false'
@@ -41,7 +36,10 @@ pipeline {
                 sh '''
                     az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
                     az account set -s $AZURE_SUBSCRIPTION_ID
+                    terraform --version
+                    terraform init
                     terraform plan -out=plan -input=false
+
                 '''
                 }
             }
