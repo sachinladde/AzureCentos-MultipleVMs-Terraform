@@ -13,7 +13,9 @@ Naming Conventions
 
 
 */
-
+terraform {
+  source = "/home/Nancy/MyWork/terraform.tfvars"
+}
 
 
 provider "azurerm" {
