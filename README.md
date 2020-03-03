@@ -188,6 +188,7 @@ Configuration files describe to Terraform the components needed to run a single 
 Terraform is controlled via a very easy to use command-line interface (CLI). Terraform is only a single command-line application: terraform. This application then takes a subcommand such as "apply" or "plan".
 
     | Common commands
+    | ------------------------------------------------------
     | apply              | Builds or changes infrastructure
     | console            | Interactive console for Terraform interpolations
     | destroy            | Destroy Terraform-managed infrastructure
@@ -208,7 +209,8 @@ Terraform is controlled via a very easy to use command-line interface (CLI). Ter
     | version            | Prints the Terraform version
     | workspace          | Workspace management
 
-All other commands:
+    | All other commands:
+    | ------------------------------------------------------
     | 0.12upgrade        | Rewrites pre-0.12 module source code for v0.12
     | debug              | Debug output management (experimental)
     | force-unlock       | Manually unlock the terraform state
