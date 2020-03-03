@@ -187,12 +187,36 @@ Configuration files describe to Terraform the components needed to run a single 
 ## Terraform CLI
 Terraform is controlled via a very easy to use command-line interface (CLI). Terraform is only a single command-line application: terraform. This application then takes a subcommand such as "apply" or "plan".
  
-| Common commands |
+| Common commands | Description |
 | --- | --- |
 | apply | Builds or changes infrastructure |
 | console | Interactive console for Terraform interpolations |
 | destroy | Destroy Terraform-managed infrastructure |
-| env | Workspace management |   
+| env | Workspace management |
+| fmt | Rewrites config files to canonical format |
+| get | Download and install modules for the configuration |
+| graph | Create a visual graph of Terraform resources | 
+| import | Import existing infrastructure into Terraform |
+| init | Initialize a Terraform working directory |
+| output | Read an output from a state file |
+| plan | Generate and show an execution plan | 
+| providers | Prints a tree of the providers used in the configuration |
+| refresh | Update local state file against real resources |
+| show | Inspect Terraform state or plan |
+| taint | Manually mark a resource for recreation |
+| untaint | Manually unmark a resource as tainted |
+| validate | Validates the Terraform files |
+| version | Prints the Terraform version |  
+| workspace | Workspace management |
 
-  [terraform website]: https://www.terraform.io/downloads.html
-  [Microsoft Website]: https://code.visualstudio.com/download
+| All other commands | Description |
+| :--- | :---|
+| 0.12upgrade | Rewrites pre-0.12 module source code for v0.12 |       
+| debug | Debug output management (experimental) |
+| force-unlock | Manually unlock the terraform state |
+| push | Obsolete command for Terraform Enterprise legacy (v1) |
+| state | Advanced state management |   
+
+
+[terraform website]: https://www.terraform.io/downloads.html
+[Microsoft Website]: https://code.visualstudio.com/download
