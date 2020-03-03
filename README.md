@@ -217,6 +217,14 @@ Terraform is controlled via a very easy to use command-line interface (CLI). Ter
 | push | Obsolete command for Terraform Enterprise legacy (v1) |
 | state | Advanced state management |   
 
+## Code to create multiple virtual machine on Azure.
+   1) Create Service Principle in Azure for terraform.
+   
+      Please follow the steps from Microsoft article for [Azure AD app registration]
+      
+   2) Inside your Centos VM, create a folder Named terraform and create a file named terraform.tfvars. Copy below text and replace it with actual values that you have noted from app registration.
+   
 
 [terraform website]: https://www.terraform.io/downloads.html
 [Microsoft Website]: https://code.visualstudio.com/download
+[Azure AD app registration]: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
