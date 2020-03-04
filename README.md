@@ -222,8 +222,22 @@ Terraform is controlled via a very easy to use command-line interface (CLI). Ter
    
       Please follow the steps from Microsoft article for [Azure AD app registration]
       
-   2) Inside your Centos VM, create a folder Named terraform and create a file named terraform.tfvars. Copy below text and replace it with actual values that you have noted from app registration.
+   2) Inside your Centos VM, create a folder Named terraform and create a file named terraform.tfvars. Copy below text and replace it         with actual values that you have noted from app registration. 
+  
+      terraform\terraform.tfvars
+      
+	subscription_id=<Copy Subscription ID from Azure Portal>
+	client_id=<Copy Client ID from Azure AD app registration>
+	client_secret=<Copy Client secrete from Azure AD app registration>
+	tenant_id=<Copy Tenant ID from Azure AD app registration>
+  
+        Note:- If you dont want to define above confidential credentials in the file then you can define it as Envoirnment variable like         below.
    
+	export TF_VAR_subscription_id= <Copy Subscription ID from Azure Portal>
+	export TF_VAR_client_id= <Copy Client ID from Azure AD app registration>
+	export TF_VAR_client_secret=<Copy Client secrete from Azure AD app registration>
+	export TF_VAR_tenant_id=<Copy Tenant ID from Azure AD app registration>
+	     
 
 [terraform website]: https://www.terraform.io/downloads.html
 [Microsoft Website]: https://code.visualstudio.com/download
