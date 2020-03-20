@@ -237,7 +237,17 @@ Terraform is controlled via a very easy to use command-line interface (CLI). Ter
 	export TF_VAR_client_id= <Copy Client ID from Azure AD app registration>
 	export TF_VAR_client_secret=<Copy Client secrete from Azure AD app registration>
 	export TF_VAR_tenant_id=<Copy Tenant ID from Azure AD app registration>
-	     
+
+3) Below is the code to create new VMs in an existing resource group and Virtual Network
+	 ```shell
+		provider "azurerm" {
+		version = "~> 1.25"
+		subscription_id="${var.subscription_id}"
+		client_id="${var.client_id}"
+		client_secret="${var.client_secret}"
+		tenant_id="${var.tenant_id}"
+  		}
+	```
 
 [terraform website]: https://www.terraform.io/downloads.html
 [Microsoft Website]: https://code.visualstudio.com/download
