@@ -70,6 +70,11 @@ resource "azurerm_virtual_machine" "vm" {
     storage_uri = "${var.boot_diagnostics_storage_uri}"
   }
 
+// Adding Provisioner for Ansible
+  provisioner "local-exec" {
+ command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False \ansible-playbook -u Nancy --private-key '${file("/etc/ssh/ssh_host_rsa_key")}' -i '${azurerm_public_ip.pip.*.ip_address},' Pingtest.yml"
+ }
+
 }
 /*
       os_profile_windows_config {
