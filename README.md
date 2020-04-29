@@ -231,13 +231,148 @@ Terraform is controlled via a very easy to use command-line interface (CLI). Ter
 	client_secret=<Copy Client secrete from Azure AD app registration>
 	tenant_id=<Copy Tenant ID from Azure AD app registration>
   
-        Note:- If you dont want to define above confidential credentials in the file then you can define it as Envoirnment variable like         below.
+       Note:- If you dont want to define above confidential credentials in the file then you can define it as Envoirnment variable like         below.
    
 	export TF_VAR_subscription_id= <Copy Subscription ID from Azure Portal>
 	export TF_VAR_client_id= <Copy Client ID from Azure AD app registration>
 	export TF_VAR_client_secret=<Copy Client secrete from Azure AD app registration>
 	export TF_VAR_tenant_id=<Copy Tenant ID from Azure AD app registration>
-	     
+
+3) Below is the code to create new VMs in an existing resource group and Virtual Network
+	 ```shell
+		provider "azurerm" {
+		version = "~> 1.25"
+		subscription_id="${var.subscription_id}"
+		client_id="${var.client_id}"
+		client_secret="${var.client_secret}"
+		tenant_id="${var.tenant_id}"
+  		}
+	    // Importing existing resource group
+		data "azurerm_resource_group" "res_group"{
+    		name  = "${var.resource}"
+   		}
+		
+	     // Importing existing Virtual Network and subnet
+		data azurerm_virtual_network "Vnet" {
+		    name = "${var.vnet_name}"
+		    //address_space = ["10.5.0.0/16"]
+		    //location = "${var.azurerm_location}"
+		    resource_group_name = "${data.azurerm_resource_group.res_group.name}"
+		}
+		output "virtual_network_id" {
+		  value = "${data.azurerm_virtual_network.Vnet.id}"
+		}
+
+		data azurerm_subnet "subnet" {
+		    name = "${var.subnet_name}"
+		    //address_prefix = "10.5.40.0/22"
+		    virtual_network_name = "${data.azurerm_virtual_network.Vnet.name}"
+		    resource_group_name = "${data.azurerm_resource_group.res_group.name}"
+		}
+		output "subnet_id" {
+		  value = "${data.azurerm_subnet.subnet.id}"
+		}
+		
+	   //Creating network interfaces for multiple vms.Count is the veriable provided by Terraform to configure multiple resources
+	   
+		resource "azurerm_network_interface" "nic" {
+		  count= "${var.nodecount}"
+		  name= "${var.prefix}-${var.vm_name}-${count.index}-nic"
+		  location = "${var.azurerm_location}"
+		  resource_group_name = "${data.azurerm_resource_group.res_group.name}"
+
+		  ip_configuration {
+		      name = "${var.prefix}-nicConfig"
+		      subnet_id= "${data.azurerm_subnet.subnet.id}"
+		      private_ip_address_allocation="Dynamic"
+		      public_ip_address_id          = "${element(azurerm_public_ip.pip.*.id,count.index)}"
+
+			}
+		}
+
+		resource "azurerm_public_ip" "pip" {
+		  count= "${var.nodecount}"
+		  name= "${var.prefix}-${var.vm_name}-${count.index}-nic"
+		  location = "${var.azurerm_location}"
+		  resource_group_name = "${data.azurerm_resource_group.res_group.name}"
+		  allocation_method = "Dynamic"
+
+		  tags {
+		    environment = "${var.environment}"
+		  }
+		}
+		
+		resource "azurerm_managed_disk" "dd" {
+       		count= "${var.nodecount}"
+	      name = "${var.prefix}-${var.vm_name}-${count.index}-DataDisk-${count.index}"
+	      location  = "${var.azurerm_location}"
+	      resource_group_name = "${data.azurerm_resource_group.res_group.name}"
+	      storage_account_type = "${var.managed_disk_storage_account_type}"
+	      create_option        = "${var.managed_disk_create_option}"
+	      disk_size_gb         = "${var.managed_disk_size_gb}"
+
+	}
+		# Creating Multiple VMs
+		resource "azurerm_virtual_machine" "vm" {
+		      count= "${var.nodecount}"
+		      name = "${var.prefix}-${var.vm_name}-${count.index}"
+		      location="${var.azurerm_location}"
+		      resource_group_name = "${data.azurerm_resource_group.res_group.name}"
+		      network_interface_ids = ["${element(azurerm_network_interface.nic.*.id,count.index)}"]
+		      vm_size = "${var.vm_size}"
+		      delete_os_disk_on_termination = "${var.delete_os_disk_on_termination}"
+		      //delete_data_disk_on_termination = "${var.delete_data_disk_on_termination}"
+
+		      storage_image_reference {
+		      publisher = "${var.vm_image_publisher}"
+		      offer = "${var.vm_image_offer}"
+		      sku = "${var.vm_image_sku}"
+		      version = "${var.vm_image_version}"
+		      }
+
+		      storage_os_disk {
+		      name = "${var.prefix}-osdisk${count.index}"
+		      caching = "ReadWrite"
+		      create_option = "FromImage"
+		      managed_disk_type = "${var.managed_disk_type}"
+		      disk_size_gb      = "${var.os_disk_size_gb}"
+		      }
+
+		# Adding additional disk  to multiple VMs
+
+		    storage_data_disk {
+		    name            = "${element(azurerm_managed_disk.dd.*.name, count.index)}"
+		    managed_disk_id = "${element(azurerm_managed_disk.dd.*.id, count.index)}"
+		    create_option   = "Attach"
+		    lun             = 0
+		    disk_size_gb    = "${element(azurerm_managed_disk.dd.*.disk_size_gb, count.index)}"
+		    }
+
+		      #define credentials # How can we create VM without specifying password in the code.
+		      os_profile {
+		      computer_name ="${var.prefix}-${var.vm_name}-${count.index}"
+		      admin_username = "${var.VM_ADMIN}"
+		     // admin_password = "${var.VM_PASSWORD}"
+		      }
+
+		       os_profile_linux_config {
+		    disable_password_authentication = true
+
+		    ssh_keys {
+		      path     = "/home/${var.VM_ADMIN}/.ssh/authorized_keys"
+		      key_data = "${file("/etc/ssh/ssh_host_rsa_key.pub")}"
+		    }
+		  }
+		   boot_diagnostics {
+		    enabled     = "${var.boot_diagnostics_storage_uri != "" ? true : false}"
+		    storage_uri = "${var.boot_diagnostics_storage_uri}"
+		  }
+
+		// Adding Provisioner for Ansible
+		  provisioner "local-exec" {
+		 command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False \ansible-playbook -u Nancy --private-key '${file("/etc/ssh/ssh_host_rsa_key")}' -i '${azurerm_public_ip.pip.*.ip_address},' Pingtest.yml"
+	    }
+	```
 
 [terraform website]: https://www.terraform.io/downloads.html
 [Microsoft Website]: https://code.visualstudio.com/download
