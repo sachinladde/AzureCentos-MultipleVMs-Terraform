@@ -22,7 +22,7 @@ pipeline {
                 sh 'whoami'
                 sh 'sudo rm -r *'
                //sh 'git clone git@github.com:sachinladde/MyWork.git' 
-               // git url: 'git@github.com:sachinladde/MyWork.git'
+               //git url: 'git@github.com:sachinladde/MyWork.git'
                  git credentialsId: '24120fd5-a5de-40b1-a325-4ddf72e3f8b6', url: 'https://github.com/sachinladde/AzureCentos-MultipleVMs-Terraform.git'  
             }
         }
