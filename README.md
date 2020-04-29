@@ -371,7 +371,7 @@ Terraform is controlled via a very easy to use command-line interface (CLI). Ter
 		// Adding Provisioner for Ansible
 		  provisioner "local-exec" {
 		 command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False \ansible-playbook -u Nancy --private-key '${file("/etc/ssh/ssh_host_rsa_key")}' -i '${azurerm_public_ip.pip.*.ip_address},' Pingtest.yml"
-		 }
+	    }
 	```
 
 [terraform website]: https://www.terraform.io/downloads.html
