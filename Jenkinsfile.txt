@@ -49,7 +49,7 @@ pipeline {
      stage('terraform apply') {
             steps {
                 sh 'echo "Executing the Plan....!!"'
-                sh 'terraform apply -input=false'
+                sh 'terraform apply "plan" -input=false'
                 sh 'echo "Executing the Plan....!!"
             }
         }
