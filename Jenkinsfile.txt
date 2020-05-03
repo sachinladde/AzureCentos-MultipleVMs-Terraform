@@ -41,10 +41,19 @@ pipeline {
                 sh 'terraform --version'
                 sh 'terraform init'
                 sh 'terraform plan -out=plan -input=false'
+                
 
                 //}
             }
         }
+     stage('terraform apply') {
+            steps {
+                sh 'echo "Executing the Plan....!!"'
+                sh 'terraform apply -input=false'
+                sh 'echo "Executing the Plan....!!"
+            }
+        }
+        
         stage('terraform ended') {
             steps {
                 sh 'echo "Ended....!!"'
