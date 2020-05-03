@@ -41,10 +41,10 @@ variable "subnet_name"{
   default = "default"
 }
 variable "vnet_name" {
-  default = "SA-DEV-vnet"
+  default = "SA-Prod-vnet"
 }
 variable "resource"{
-  default= "SA-DEV"
+  default= "SA-Prod"
 }
 
 variable "delete_os_disk_on_termination" {
