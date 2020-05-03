@@ -41,6 +41,7 @@ pipeline {
                 sh 'terraform --version'
                 sh 'terraform init'
                 sh 'terraform plan -out=plan -input=false'
+                sh 'terraform apply plan'
 
                 //}
             }
