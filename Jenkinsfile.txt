@@ -40,7 +40,7 @@ pipeline {
                 //sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
                 sh 'terraform --version'
                 sh 'terraform init'
-                sh 'terraform plan -out=plan -input=false'
+                sh 'terraform plan -out=tfplan -input=false'
                 
 
                 //}
@@ -49,14 +49,14 @@ pipeline {
      stage('terraform apply') {
             steps {
                 sh 'echo "Executing the Plan....!!"'
-                sh 'terraform apply "plan" -input=false'
-                sh 'echo "Executing the Plan....!!"
+                sh 'terraform apply "tfplan" -input=false'
+                sh 'echo "Terraform Apply Execution Ended. Please check if resources are created in Azure"
             }
         }
         
         stage('terraform ended') {
             steps {
-                sh 'echo "Ended....!!"'
+                sh 'echo "Terraform Code Ended....!!"'
             }
         }
 
