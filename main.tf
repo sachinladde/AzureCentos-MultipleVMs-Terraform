@@ -11,6 +11,10 @@ Naming Conventions
       MD = Managed Disk
 
 
+Existing Resources :-
+    data.azurerm_resource_group.res_group   =  SA-DEV
+    data.azurerm_virtual_network.Vnet       =   SA-DEV-Vnet
+    data.azurerm_subnet.subnet              = default 
 
 */
 terraform {
@@ -41,10 +45,10 @@ variable "subnet_name"{
   default = "default"
 }
 variable "vnet_name" {
-  default = "SA-Prod-vnet"
+  default = "SA-DEV-vnet"
 }
 variable "resource"{
-  default= "SA-Prod"
+  default= "SA-DEV"
 }
 
 variable "delete_os_disk_on_termination" {
