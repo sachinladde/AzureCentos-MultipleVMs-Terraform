@@ -50,7 +50,7 @@ pipeline {
             steps {
                 sh 'echo "Executing the Plan....!!"'
                 sh 'terraform apply "tfplan" -input=false'
-                sh 'echo "Terraform Apply Execution Ended. Please check if resources are created in Azure"
+                sh 'echo "Terraform Apply Execution Ended. Please check if resources are created in Azure"'
             }
         }
         
