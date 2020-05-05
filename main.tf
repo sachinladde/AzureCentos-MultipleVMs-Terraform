@@ -11,7 +11,7 @@ Naming Conventions
       MD = Managed Disk
 
 
-Existing Resources :-
+Existing Resources :-   
     data.azurerm_resource_group.res_group   =  SA-DEV
     data.azurerm_virtual_network.Vnet       =   SA-DEV-Vnet
     data.azurerm_subnet.subnet              = default 
