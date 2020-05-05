@@ -49,7 +49,7 @@ pipeline {
      stage('terraform apply') {
             steps {
                 sh 'echo "Executing the Plan....!!"'
-                sh 'terraform apply "tfplan" -input=false'
+                sh 'terraform apply "tfplan"'
                 sh 'echo "Terraform Apply Execution Ended. Please check if resources are created in Azure"'
             }
         }
