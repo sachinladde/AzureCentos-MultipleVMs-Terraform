@@ -4,13 +4,21 @@ This project can be used to create multiple Linux VMs with SSH key and zure feat
 
 ## Contents
 
-* [Project Prerequisites](#Project Prerequisites)
+* [Project Prerequisites](#Project_Prerequisites)
 	- Install & Configure Terraform
 	- Install & Configure Jenkins
 	- Install & Configure Git
 	- Configure Visual Studio Code
-* [Introduction to Hashicorp Configuration Language (Terraform)](#Introduction to Hashicorp Configuration Language (Terraform))
-* [Components](#components)
+	
+* [Introduction to Hashicorp Configuration Language (Terraform)](#Introduction_to_Terraform)
+	- Terraform Commands
+	- Terraform Code for Multiple Linux VMs on Azure
+
+* [Jenkins Integration with Git](#Jenkins_Git_Integration)
+	- Jenkins Project Setup
+	- Github Repository & Webhook Configuration
+
+
 * [Features](docs/readmes/README.md#features)
 * [What To Do Next?](#what-to-do-next)
 
