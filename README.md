@@ -1,5 +1,5 @@
 # Azure Linux VMs
-This project can be used to create multiple Linux VMs with SSH key and zure feature like boot diagnostics using Terraform script. One can also leverage Jenkins Pipeline as code feature to automate VM's deployment in Azure on each code commit in the git repository.
+This project can be used to create multiple Linux VMs with SSH key and Azure feature like boot diagnostics using Terraform script. One can also leverage Jenkins Pipeline as code feature to automate VM's deployment in Azure on each code commit in the git repository.
 
 
 ## Contents
