@@ -4,7 +4,7 @@ This project can be used to create multiple Linux VMs with SSH key and zure feat
 
 ## Contents
 
-* [Project Prerequisites](#Project_Prerequisites)
+* [Project Prerequisites](##Project_Prerequisites)
 	- Install & Configure Terraform
 	- Install & Configure Jenkins
 	- Install & Configure Git
