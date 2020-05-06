@@ -387,8 +387,8 @@ This section explains different configuration of jenkins and github repository. 
 
 ### Jenkins Plugin & Project Setup
    - In order to integrate Jenkins with Github or any version controle system, we need to install respective plugins in Jenkins. You need to Select "Manage Jenkins" - > Manage Plugins - > Search for github plugin and install it.
+   - Create SSH credentials in Jenkins to connect with Git hub repository.The SSH key used for this credential will be updated in the git repository.
    
-   -
 
 [terraform website]: https://www.terraform.io/downloads.html
 [Microsoft Website]: https://code.visualstudio.com/download
