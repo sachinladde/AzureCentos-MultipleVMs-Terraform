@@ -4,19 +4,21 @@ This project can be used to create multiple Linux VMs with SSH key and zure feat
 
 ## Contents
 
-* [Getting Started](#getting-started)
-* [Demo](#demo)
+* [Project Prerequisites](#Project Prerequisites)
+	- Install & Configure Terraform
+	- Install & Configure Jenkins
+	- Install & Configure Git
+	- Configure Visual Studio Code
+* [Introduction to Hashicorp Configuration Language (Terraform)](#Introduction to Hashicorp Configuration Language (Terraform))
 * [Components](#components)
 * [Features](docs/readmes/README.md#features)
 * [What To Do Next?](#what-to-do-next)
 
 
-## Getting Started
-
-### Prerequisites
+## Project Prerequisites
 You will need one Linux VM for installing the tools like Git, Terraform, Ansible. Below are the installation steps for required tools.
 
-### 1. Install Terraform
+### 1. Install & Configure Terraform
 
 - Install Wget Package 
 
@@ -53,7 +55,7 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
    ```shell
   terraform --version   
     ```
-### 2. Installing Jenkins
+### 2. Install & Configure Jenkins
 - Jenkins is a Java application, so the first step is to install Java. Run the following command to install the OpenJDK 8 package:
    ```shell
   sudo yum install java-1.8.0-openjdk-devel   
@@ -158,7 +160,7 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
   	sudo git config --list
      ``` 
 
-### 4. Configure VS code on Local Windows Desktop to connect to Linux VM.
+### 4. Configure Visual Studio code on Local Windows Desktop to connect to Linux VM.
 
 - Download and install Visual Studio Code on windows desktop from this [Microsoft Website]
 - Once you installed Visual Studio Code, you need to add an extention named "SSH FS". This extention allows you to access files from your Linux VM. Please refer below picture. 
@@ -180,11 +182,11 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 ## Code Demo
 In this section we are going to authenticate Azure cloud using application id and secret which we have created in earlier section and also we will be creating two Azure Linux VMs using terraform Code.
 
-## Overview of terraform
+## Introduction to Hashicorp Configuration Language (Terraform)
 Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.
 Configuration files describe to Terraform the components needed to run a single application or your entire datacenter
 
-## Terraform CLI
+### Terraform Common Commands
 Terraform is controlled via a very easy to use command-line interface (CLI). Terraform is only a single command-line application: terraform. This application then takes a subcommand such as "apply" or "plan".
  
 | Common commands | Description |
@@ -217,7 +219,7 @@ Terraform is controlled via a very easy to use command-line interface (CLI). Ter
 | push | Obsolete command for Terraform Enterprise legacy (v1) |
 | state | Advanced state management |   
 
-## Code to create multiple virtual machine on Azure.
+### Terraform Code for Multiple Linux VMs on Azure
    1) Create Service Principle in Azure for terraform.
    
       Please follow the steps from Microsoft article for [Azure AD app registration]
