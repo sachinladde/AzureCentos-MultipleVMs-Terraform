@@ -187,10 +187,9 @@ You will need one Linux VM for installing the tools like Git, Terraform, Ansible
 
 	![sshfsconnect](sshfsconnect.JPG)
 	
-## Code Demo
+## Introduction to Hashicorp Configuration Language (Terraform)
 In this section we are going to authenticate Azure cloud using application id and secret which we have created in earlier section and also we will be creating two Azure Linux VMs using terraform Code.
 
-## Introduction to Hashicorp Configuration Language (Terraform)
 Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.
 Configuration files describe to Terraform the components needed to run a single application or your entire datacenter
 
@@ -383,6 +382,13 @@ Terraform is controlled via a very easy to use command-line interface (CLI). Ter
 		 command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False \ansible-playbook -u Nancy --private-key '${file("/etc/ssh/ssh_host_rsa_key")}' -i '${azurerm_public_ip.pip.*.ip_address},' Pingtest.yml"
 	    }
 	```
+## Jenkins Integration with Git
+This section explains different configuration of jenkins and github repository. It also explains how Jenkins & git read the changes in the repository & auto triggeres Jenkins build.
+
+### Jenkins Plugin & Project Setup
+   - In order to integrate Jenkins with Github or any version controle system, we need to install respective plugins in Jenkins. You need to Select "Manage Jenkins" - > Manage Plugins - > Search for github plugin and install it.
+   
+   -
 
 [terraform website]: https://www.terraform.io/downloads.html
 [Microsoft Website]: https://code.visualstudio.com/download
