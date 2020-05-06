@@ -390,11 +390,11 @@ This section explains different configuration of jenkins and github repository. 
    - Create SSH credentials in Jenkins to connect with Git hub repository.The SSH key used for this credential will be updated in the git repository.
    - Create a Pipeline project with below configuration
    
-   	![Jenkins_Project_Settings](Jenkins_Project_Settings.JPG)
+   ![Jenkins_Project_Settings](Jenkins_Project_Settings.JPG)
    
    -As shown in below picture configure pipeline settings to access our terraform code from GIT repository. Here you have to specify HTTPS link of your git repo and use SSH credentials that you created in earlier step along with the name of the git branch. At last specify the name of the file from git repository which contains the build script.
    
-   	![Pipeline](Pipeline.JPG)
+   ![Pipeline](Pipeline.JPG)
    
 
 [terraform website]: https://www.terraform.io/downloads.html
