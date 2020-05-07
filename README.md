@@ -401,6 +401,10 @@ This section explains different configuration of jenkins and github repository. 
  
  ![Git-settings](Git-settings.JPG)				![gitssh](gitssh.JPG)
  
+ - Next we need to configure webhook in git repository setting. Webhook is basically a URL of your Jenkins Server. Git hub use this webhook to send the notification or events about the changes in repository. Based on these events, if configured, jenkins will trigger the build on every code commit.
+ 
+ ![Jenkins-webhook](Jenkins-webhook.JPG)
+ 
  
    
 [terraform website]: https://www.terraform.io/downloads.html
