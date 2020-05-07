@@ -396,7 +396,13 @@ This section explains different configuration of jenkins and github repository. 
    
    ![Pipeline](Pipeline.JPG)
    
-
+### Github Repository Settings
+   - Login to your github Account and create a repository. Once created, you need to add Public Key and webhook from setting option. If you have multiple repositories, then instead of creating a seperate SSH key for each repo, you can add one SSH key accross your git account. Please refer below picture.
+ 
+ ![Git-settings](Git-settings.JPG)				![gitssh](gitssh.JPG)
+ 
+ 
+   
 [terraform website]: https://www.terraform.io/downloads.html
 [Microsoft Website]: https://code.visualstudio.com/download
 [Azure AD app registration]: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
