@@ -19,8 +19,8 @@ This project can be used to create multiple Linux VMs with SSH key and Azure fea
 	- Github Repository & Webhook Configuration
 
 
-* [Features](docs/readmes/README.md#features)
-* [What To Do Next?](#what-to-do-next)
+* [Summary](#Summary)
+
 
 
 ## Project Prerequisites
