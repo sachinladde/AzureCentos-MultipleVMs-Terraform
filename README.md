@@ -412,9 +412,8 @@ This section explains different configuration of jenkins and github repository. 
  And finally thanks for taking time to visit my repo and I hope everything that I explained here will be usefull. In case you have further questions, please reachout to me via email or Linkedin
  
  Regards,
- Sachin Ladde
- sachin.100185@gmail.com
- https://www.linkedin.com/in/sachin-ladde-30725419/
+ 
+ Sachin Ladde   |   sachin.100185@gmail.com  |   https://www.linkedin.com/in/sachin-ladde-30725419/
  
  
 
