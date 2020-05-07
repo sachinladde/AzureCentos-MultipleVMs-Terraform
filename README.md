@@ -405,7 +405,19 @@ This section explains different configuration of jenkins and github repository. 
  
  ![git-webhook](git-webhook.JPG)
  
+ ## Summary
  
+ In this project I tried to explain how easily we can build & automate our infrastructure using Terraform, Jenkins pipline as code & Git hub. With very few modification you can even install different applications on newly created VMs. You may use Ansible playbook or any other shell script as your provisioner.
+ 
+ And finally thanks for taking time to visit my repo and I hope everything that I explained here will be usefull. In case you have further questions, please reachout to me via email or Linkedin
+ 
+ Regards,
+ Sachin Ladde
+ sachin.100185@gmail.com
+ https://www.linkedin.com/in/sachin-ladde-30725419/
+ 
+ 
+
    
 [terraform website]: https://www.terraform.io/downloads.html
 [Microsoft Website]: https://code.visualstudio.com/download
