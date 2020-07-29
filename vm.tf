@@ -105,8 +105,8 @@ resource "azurerm_virtual_machine_extension" "ADD2AD" {
     settings = <<SETTINGS
         {
             "Name": "ta2-dev.info",
-            "OUPath": "OU=Servers,OU=TAdmin2,DC=ta2-dev,DC=info",
-            "User": "ta2-dev\\",
+            "OUPath": "OU=Servers,OU=domain,DC=domain,DC=info",
+            "User": "domain\\",
             "Restart": "true",
             "Options": "3"
         }
